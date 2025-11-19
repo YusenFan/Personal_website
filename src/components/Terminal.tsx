@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { X, Minimize2, Maximize2 } from 'lucide-react'
+import { X, Minimize2 } from 'lucide-react'
 
 interface Command {
   input: string
