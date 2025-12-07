@@ -7,7 +7,7 @@ interface Skill {
 }
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeCategory, setActiveCategory] = useState('frontend')
 
   const skills: Skill[] = [
     // Frontend
@@ -22,14 +22,11 @@ const Skills = () => {
     { name: 'Scala', level: 80, category: 'backend' },
     { name: 'PHP', level: 75, category: 'backend' },
     { name: 'Bash/Shell', level: 85, category: 'backend' },
-    { name: 'Express.js', level: 90, category: 'backend' },
 
     // Database & Infrastructure
     { name: 'PostgreSQL', level: 85, category: 'tools' },
     { name: 'Firebase', level: 90, category: 'tools' },
-    { name: 'MySQL', level: 85, category: 'tools' },
-    { name: 'Redis', level: 80, category: 'tools' },
-
+    { name: 'MySQL', level: 85, category: 'tools' }, 
     // DevOps & Cloud
     { name: 'AWS (EC2, S3, KMS)', level: 90, category: 'tools' },
     { name: 'Docker', level: 85, category: 'tools' },

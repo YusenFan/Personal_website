@@ -192,7 +192,7 @@ const Contact = () => {
         {/* Footer */}
         <div className="mt-16 text-center text-gray-400">
           <p className="mb-2">
-            <span className="text-terminal-green">$</span> Made with React + TypeScript + Tailwind CSS
+            <span className="text-terminal-green">$</span> 
           </p>
           <p className="text-sm">
             © 2024 Yusen Fan. All rights reserved.

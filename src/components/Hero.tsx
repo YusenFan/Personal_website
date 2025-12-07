@@ -36,7 +36,7 @@ const Hero = () => {
           </div>
 
           <p className="text-gray-400 max-w-2xl mx-auto mb-12 text-lg">
-            Founding Engineer at FlintX | Building secure AI infrastructure |
+            Founding Engineer at FlintX | Founder of ProTechs Nutrition |
             NUS Electrical & Computer Engineering
           </p>
 

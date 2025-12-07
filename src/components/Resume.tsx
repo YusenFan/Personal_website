@@ -1,14 +1,54 @@
 import { Download, FileText, Eye } from 'lucide-react'
+import html2pdf from 'html2pdf.js'
 
 const Resume = () => {
-  const handleDownload = () => {
-    // Replace with your actual resume PDF link
-    window.open('/resume.pdf', '_blank')
+  const handleDownload = async () => {
+    try {
+      // Fetch the HTML content
+      const htmlResponse = await fetch('/index-swe.html')
+      const htmlText = await htmlResponse.text()
+      
+      // Fetch the CSS content
+      const cssResponse = await fetch('/style.css')
+      const cssText = await cssResponse.text()
+      
+      // Create a temporary container
+      const tempContainer = document.createElement('div')
+      tempContainer.innerHTML = htmlText
+      
+      // Inject the CSS into the HTML
+      const styleElement = document.createElement('style')
+      styleElement.textContent = cssText
+      tempContainer.insertBefore(styleElement, tempContainer.firstChild)
+      
+      // Configure PDF options
+      const options = {
+        margin: [10, 10, 10, 10] as [number, number, number, number],
+        filename: 'Yusen_Fan_Resume.pdf',
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          logging: false
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait' as const
+        }
+      }
+      
+      // Generate and download PDF
+      await html2pdf().set(options).from(tempContainer).save()
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+      alert('Failed to generate PDF. Please try again.')
+    }
   }
 
   const handleView = () => {
     // Replace with your actual resume link or viewer
-    window.open('/resume.pdf', '_blank')
+    window.open('/index-swe.html', '_blank')
   }
 
   return (

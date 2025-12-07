@@ -8,6 +8,7 @@ interface Project {
   technologies: string[]
   github?: string
   demo?: string
+  website?: string
   category: string
 }
 
@@ -16,18 +17,28 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
-      title: 'FlintX - Confidential AI Platform',
-      description: 'Full end-to-end confidential AI platform with LLM and RAG pipelines deployed within Trusted Execution Environment, ensuring complete data encryption and zero-trust infrastructure.',
-      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop',
-      technologies: ['Python', 'AWS Nitro Enclave', 'TEE', 'LLM', 'RAG', 'Multimodal AI'],
-      category: 'fullstack'
+      title: 'CoverCraft',
+      description: 'CoverCraft is a platform that allows you to create your own cover letters for job applications.',
+      image: 'https://www.theladders.com/wp-content/uploads/How-to-Write-a-Cover-Letter-Sample-Job-Application-Email-Tips-and-Examples-800x420.jpg',
+      technologies: ['React', 'Firebase', 'HitPay', 'Database Design'],
+      category: 'fullstack',
+      website: "https://covercraft-ai-ivory.vercel.app/",
     },
     {
-      title: 'ProTechs Nutrition - Online Order System',
+      title: 'FlintX - Confidential AI Platform',
+      description: 'Full end-to-end confidential AI platform with LLM and RAG pipelines deployed within Trusted Execution Environment, ensuring complete data encryption and zero-trust infrastructure.',
+      image: 'https://lsvp.com/wp-content/uploads/2023/09/ai.security.lock_.header.png?1700626374',
+      technologies: ['Python', 'AWS Nitro Enclave', 'TEE', 'LLM', 'RAG', 'Multimodal AI'],
+      demo: "https://flintx.vercel.app/",
+      category: 'backend'
+    },
+    {
+      title: 'ProTechs Nutrition',
       description: 'Full-stack online ordering platform with payment integration, admin panel, and inventory management. Deployed across 6 locations with 25% sales increase.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
       technologies: ['React', 'Firebase', 'HitPay', 'Database Design'],
-      category: 'fullstack'
+      category: 'fullstack',
+      website: "www.protechsnutrition.com",
     },
     {
       title: 'Nexus Wrap - NUS FINTECH Hackathon Winner',
@@ -151,6 +162,17 @@ const Projects = () => {
                     >
                       <Github size={18} />
                       <span className="text-sm">Code</span>
+                    </a>
+                  )}
+                  {project.website && (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-300 hover:text-terminal-blue transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                      <span className="text-sm">Website</span>
                     </a>
                   )}
                   {project.demo && (

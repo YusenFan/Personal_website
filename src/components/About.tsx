@@ -4,13 +4,13 @@ const About = () => {
   const highlights = [
     {
       icon: <Code2 className="w-8 h-8" />,
-      title: 'Clean Code',
-      description: 'Writing maintainable, scalable, and efficient code is my priority'
+      title: 'Structured Thinking',
+      description: 'I love to break down complex problems into smaller, manageable parts'
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
-      title: 'Problem Solver',
-      description: 'Love tackling complex challenges with creative solutions'
+      title: 'Innovative builder',
+      description: 'I love to pave new path and build new things'
     },
     {
       icon: <Rocket className="w-8 h-8" />,
@@ -34,9 +34,7 @@ const About = () => {
             <span className="text-terminal-green">{' />'}</span>
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-            I'm a passionate software engineer with experience across confidential computing, full-stack development,
-            and entrepreneurship. Currently working as a Founding Engineer at FlintX, building secure AI infrastructure
-            within Trusted Execution Environments. I love solving complex problems and building scalable systems.
+            I love to design and build products that help people live better lives.
           </p>
         </div>
 
@@ -71,11 +69,6 @@ const About = () => {
               <span className="text-terminal-blue">{'>'}</span> I've worked across diverse domains including confidential
               computing, quantitative trading systems, healthcare technology, and fintech. I've won hackathon awards and
               led projects that serve thousands of users.
-            </p>
-            <p>
-              <span className="text-terminal-blue">{'>'}</span> I specialize in architecting scalable infrastructure,
-              optimizing performance, and building secure systems. I'm passionate about leveraging technology to solve
-              real-world problems and create meaningful impact.
             </p>
           </div>
         </div>
