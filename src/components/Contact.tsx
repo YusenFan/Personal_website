@@ -1,5 +1,7 @@
 import { Mail, Github, Linkedin, Phone, MapPin, Send } from 'lucide-react'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { fadeInUp, staggerContainer } from '../utils/animations'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,49 +23,61 @@ const Contact = () => {
       name: 'GitHub',
       icon: <Github className="w-6 h-6" />,
       url: 'https://github.com/yusenfan',
-      color: 'hover:text-gray-400'
+      color: 'hover:text-slate-800'
     },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-6 h-6" />,
       url: 'https://www.linkedin.com/in/yusenfan',
-      color: 'hover:text-blue-400'
+      color: 'hover:text-blue-600'
     },
     {
       name: 'Phone',
       icon: <Phone className="w-6 h-6" />,
       url: 'tel:+6584038810',
-      color: 'hover:text-sky-400'
+      color: 'hover:text-emerald-600'
     },
     {
       name: 'Email',
       icon: <Mail className="w-6 h-6" />,
       url: 'mailto:YusenFan@u.nus.edu',
-      color: 'hover:text-terminal-green'
+      color: 'hover:text-primary'
     }
   ]
 
   return (
     <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">
-            <span className="text-terminal-green">{'<'}</span>
+            <span className="text-slate-400 font-mono">{'<'}</span>
             <span className="text-gradient">Get In Touch</span>
-            <span className="text-terminal-green">{' />'}</span>
+            <span className="text-slate-400 font-mono">{' />'}</span>
           </h2>
-          <p className="text-gray-400 text-lg">Let's work together on your next project</p>
-        </div>
+          <p className="text-slate-600 text-lg">Let's work together on your next project</p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-dark-surface p-8 rounded-lg border border-gray-800">
-            <h3 className="text-2xl font-bold mb-6 text-terminal-green">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+            className="bg-white p-8 rounded-xl border border-slate-200 shadow-card"
+          >
+            <h3 className="text-2xl font-bold mb-6 text-primary font-mono">
               $ send_message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-gray-300 mb-2 text-sm">
+                <label htmlFor="name" className="block text-slate-700 mb-2 text-sm font-medium">
                   Name
                 </label>
                 <input
@@ -72,13 +86,13 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg focus:border-terminal-green focus:outline-none text-gray-100 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none text-slate-800 transition-all"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-300 mb-2 text-sm">
+                <label htmlFor="email" className="block text-slate-700 mb-2 text-sm font-medium">
                   Email
                 </label>
                 <input
@@ -87,13 +101,13 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg focus:border-terminal-green focus:outline-none text-gray-100 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none text-slate-800 transition-all"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-300 mb-2 text-sm">
+                <label htmlFor="message" className="block text-slate-700 mb-2 text-sm font-medium">
                   Message
                 </label>
                 <textarea
@@ -102,36 +116,47 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg focus:border-terminal-green focus:outline-none text-gray-100 resize-none transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none text-slate-800 resize-none transition-all"
                   placeholder="Your message..."
                 ></textarea>
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-terminal-green text-dark-bg font-semibold rounded-lg hover:shadow-lg hover:shadow-terminal-green/50 transition-all hover:scale-105"
+                className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-hover hover:shadow-button-hover transition-all"
               >
                 <Send size={20} />
                 Send Message
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-dark-surface p-8 rounded-lg border border-gray-800">
-              <h3 className="text-2xl font-bold mb-6 text-terminal-blue">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="space-y-8"
+          >
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white p-8 rounded-xl border border-slate-200 shadow-card"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-accent-indigo font-mono">
                 $ contact_info
               </h3>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <Mail className="text-terminal-green w-6 h-6 mt-1" />
+                  <Mail className="text-primary w-6 h-6 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-200 mb-1">Email</h4>
+                    <h4 className="font-semibold text-slate-800 mb-1">Email</h4>
                     <a
                       href="mailto:YusenFan@u.nus.edu"
-                      className="text-gray-400 hover:text-terminal-green transition-colors"
+                      className="text-slate-600 hover:text-primary transition-colors"
                     >
                       YusenFan@u.nus.edu
                     </a>
@@ -139,65 +164,78 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <MapPin className="text-terminal-green w-6 h-6 mt-1" />
+                  <MapPin className="text-primary w-6 h-6 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-gray-200 mb-1">Location</h4>
-                    <p className="text-gray-400">
+                    <h4 className="font-semibold text-slate-800 mb-1">Location</h4>
+                    <p className="text-slate-600">
                       Singapore
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Social Links */}
-            <div className="bg-dark-surface p-8 rounded-lg border border-gray-800">
-              <h3 className="text-2xl font-bold mb-6 text-terminal-blue">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-white p-8 rounded-xl border border-slate-200 shadow-card"
+            >
+              <h3 className="text-2xl font-bold mb-6 text-accent-indigo font-mono">
                 $ social_links
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <motion.a
                     key={index}
+                    whileHover={{ y: -2 }}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 p-4 bg-dark-bg border border-gray-700 rounded-lg transition-all hover:border-terminal-green ${social.color} group`}
+                    className={`flex items-center gap-3 p-4 bg-slate-50 border border-slate-200 rounded-lg transition-all hover:border-primary text-slate-600 ${social.color} group`}
                   >
                     <span className="group-hover:scale-110 transition-transform">
                       {social.icon}
                     </span>
-                    <span className="font-semibold text-gray-300">
+                    <span className="font-semibold">
                       {social.name}
                     </span>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Availability */}
-            <div className="bg-gradient-to-r from-terminal-blue/20 to-terminal-green/20 p-6 rounded-lg border border-terminal-green/30">
+            <motion.div
+              variants={fadeInUp}
+              className="bg-gradient-to-r from-emerald-50 to-blue-50 p-6 rounded-xl border border-emerald-200"
+            >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-3 h-3 bg-terminal-green rounded-full animate-pulse"></div>
-                <span className="text-terminal-green font-semibold">Available for work</span>
+                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span className="text-emerald-700 font-semibold">Available for work</span>
               </div>
-              <p className="text-gray-300 text-sm">
+              <p className="text-slate-600 text-sm">
                 Currently open to freelance opportunities and full-time positions
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Footer */}
-        <div className="mt-16 text-center text-gray-400">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="mt-16 text-center text-slate-500"
+        >
           <p className="mb-2">
-            <span className="text-terminal-green">$</span> 
+            <span className="text-emerald-600 font-mono">$</span>
           </p>
           <p className="text-sm">
             © 2024 Yusen Fan. All rights reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

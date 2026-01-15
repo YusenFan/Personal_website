@@ -1,77 +1,61 @@
 import { Code2, Lightbulb, Rocket, Users } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeInUp, staggerContainer } from '../utils/animations'
 
 const About = () => {
-  const highlights = [
-    {
-      icon: <Code2 className="w-8 h-8" />,
-      title: 'Structured Thinking',
-      description: 'I love to break down complex problems into smaller, manageable parts'
-    },
-    {
-      icon: <Lightbulb className="w-8 h-8" />,
-      title: 'Innovative builder',
-      description: 'I love to pave new path and build new things'
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: 'Fast Learner',
-      description: 'Constantly learning new technologies and best practices'
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: 'Team Player',
-      description: 'Collaborative mindset with strong communication skills'
-    }
-  ]
+ 
 
   return (
-    <section id="about" className="py-20 bg-dark-surface">
+    <section id="about" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">
-            <span className="text-terminal-green">{'<'}</span>
+            <span className="text-slate-400 font-mono">{'<'}</span>
             <span className="text-gradient">About Me</span>
-            <span className="text-terminal-green">{' />'}</span>
+            <span className="text-slate-400 font-mono">{' />'}</span>
           </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+          <p className="text-slate-600 max-w-3xl mx-auto text-lg">
             I love to design and build products that help people live better lives.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((highlight, index) => (
-            <div
-              key={index}
-              className="bg-dark-bg p-6 rounded-lg border border-gray-800 hover:border-terminal-green transition-all hover:card-glow group"
-            >
-              <div className="text-terminal-blue mb-4 group-hover:text-terminal-green transition-colors">
-                {highlight.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-100">
-                {highlight.title}
-              </h3>
-              <p className="text-gray-400">
-                {highlight.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={staggerContainer}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          
+        </motion.div>
 
-        <div className="mt-16 max-w-4xl mx-auto bg-dark-bg p-8 rounded-lg border border-gray-800">
-          <h3 className="text-2xl font-bold mb-4 text-terminal-green">$ whoami</h3>
-          <div className="space-y-4 text-gray-300">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeInUp}
+          className="mt-16 max-w-4xl mx-auto bg-white p-8 rounded-xl border border-slate-200 shadow-card"
+        >
+          <h3 className="text-2xl font-bold mb-4 text-emerald-600 font-mono">$ whoami</h3>
+          <div className="space-y-4 text-slate-700">
             <p>
-              <span className="text-terminal-blue">{'>'}</span> I'm currently pursuing a Bachelor's in Electrical
+              <span className="text-primary font-mono">{'>'}</span> I'm currently pursuing a Bachelor's in Electrical
               and Computer Engineering at the National University of Singapore. My experience spans from building
               confidential AI platforms to founding a successful nutrition startup with 6 locations across Singapore.
             </p>
             <p>
-              <span className="text-terminal-blue">{'>'}</span> I've worked across diverse domains including confidential
+              <span className="text-primary font-mono">{'>'}</span> I've worked across diverse domains including confidential
               computing, quantitative trading systems, healthcare technology, and fintech. I've won hackathon awards and
               led projects that serve thousands of users.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

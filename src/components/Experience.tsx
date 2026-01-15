@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Briefcase, Calendar, ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { fadeInUp, fadeInLeft, fadeInRight } from '../utils/animations'
 
 interface ExperienceItem {
   company: string
@@ -96,92 +98,117 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-dark-surface">
+    <section id="experience" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4">
-            <span className="text-terminal-green">{'<'}</span>
+            <span className="text-slate-400 font-mono">{'<'}</span>
             <span className="text-gradient">Experience</span>
-            <span className="text-terminal-green">{' />'}</span>
+            <span className="text-slate-400 font-mono">{' />'}</span>
           </h2>
-          <p className="text-gray-400 text-lg">My professional journey</p>
-        </div>
+          <p className="text-slate-600 text-lg">My professional journey</p>
+        </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-terminal-blue to-terminal-green"></div>
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary to-accent-indigo"></div>
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={index % 2 === 0 ? fadeInRight : fadeInLeft}
                 className={`relative flex flex-col md:flex-row gap-8 items-center ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-terminal-green rounded-full border-4 border-dark-surface z-10 animate-pulse"></div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg z-10"
+                />
 
                 {/* Content */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
-                  <div
-                    className="bg-dark-bg p-6 rounded-lg border border-gray-800 hover:border-terminal-green transition-all hover:card-glow cursor-pointer"
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-card hover:shadow-card-hover hover:border-primary transition-all cursor-pointer"
                     onClick={() => toggleExpand(index)}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <Briefcase className="text-terminal-blue w-5 h-5" />
-                        <h3 className="text-xl font-bold text-terminal-green">
+                        <Briefcase className="text-primary w-5 h-5" />
+                        <h3 className="text-xl font-bold text-primary">
                           {exp.position}
                         </h3>
                       </div>
                       <ChevronDown
-                        className={`text-terminal-green w-5 h-5 transition-transform duration-300 ${
+                        className={`text-primary w-5 h-5 transition-transform duration-300 ${
                           expandedItems.has(index) ? 'rotate-180' : ''
                         }`}
                       />
                     </div>
 
-                    <h4 className="text-lg font-semibold text-gray-200 mb-2 text-left">
+                    <h4 className="text-lg font-semibold text-slate-800 mb-2 text-left">
                       {exp.company}
                     </h4>
 
-                    <div className="flex items-center gap-2 text-gray-400">
+                    <div className="flex items-center gap-2 text-slate-500">
                       <Calendar className="w-4 h-4" />
                       <span>{exp.period}</span>
                     </div>
 
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        expandedItems.has(index) ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      <ul className="space-y-2 mb-4 text-gray-300 text-left">
-                        {exp.description.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-terminal-blue mt-1">{'>'}</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <AnimatePresence>
+                      {expandedItems.has(index) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-4">
+                            <ul className="space-y-2 mb-4 text-slate-700 text-left">
+                              {exp.description.map((item, i) => (
+                                <li key={i} className="flex items-start gap-2">
+                                  <span className="text-primary mt-1 font-mono">{'>'}</span>
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
 
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="px-3 py-1 text-xs bg-gray-800 text-terminal-blue rounded-full border border-gray-700"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                            <div className="flex flex-wrap gap-2">
+                              {exp.technologies.map((tech, i) => (
+                                <span
+                                  key={i}
+                                  className="px-3 py-1 text-xs bg-primary-light text-primary rounded-full font-mono"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
 
                 {/* Spacer for timeline */}
                 <div className="hidden md:block w-5/12"></div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
