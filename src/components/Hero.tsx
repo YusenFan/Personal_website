@@ -1,22 +1,40 @@
 import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 
+const roles = ['AI enthusiast', 'Ex-Founder', 'Explorer']
+
 const Hero = () => {
   const [displayText, setDisplayText] = useState('')
-  const fullText = 'Software Engineer & Founder'
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [roleIndex, setRoleIndex] = useState(0)
+  const typingSpeed = isDeleting ? 50 : 100
 
   useEffect(() => {
-    let index = 0
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index))
-        index++
-      } else {
-        clearInterval(timer)
-      }
-    }, 100)
-    return () => clearInterval(timer)
-  }, [])
+    const currentRole = roles[roleIndex]
+    
+    if (!isDeleting && displayText === currentRole) {
+      const timeout = setTimeout(() => setIsDeleting(true), 2000)
+      return () => clearTimeout(timeout)
+    }
+
+    if (isDeleting && displayText === '') {
+      const timeout = setTimeout(() => {
+        setIsDeleting(false)
+        setRoleIndex((prev) => (prev + 1) % roles.length)
+      }, 500)
+      return () => clearTimeout(timeout)
+    }
+
+    const timer = setTimeout(() => {
+      setDisplayText(prev => 
+        isDeleting 
+          ? prev.slice(0, -1)
+          : currentRole.slice(0, prev.length + 1)
+      )
+    }, typingSpeed)
+
+    return () => clearTimeout(timer)
+  }, [displayText, isDeleting, roleIndex, typingSpeed])
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative pt-16">

@@ -1,4 +1,5 @@
-import { Briefcase, Calendar } from 'lucide-react'
+import { useState } from 'react'
+import { Briefcase, Calendar, ChevronDown } from 'lucide-react'
 
 interface ExperienceItem {
   company: string
@@ -9,6 +10,20 @@ interface ExperienceItem {
 }
 
 const Experience = () => {
+  const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set())
+
+  const toggleExpand = (index: number) => {
+    setExpandedItems(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(index)) {
+        newSet.delete(index)
+      } else {
+        newSet.add(index)
+      }
+      return newSet
+    })
+  }
+
   const experiences: ExperienceItem[] = [
     {
       company: 'FlintX',
@@ -109,41 +124,57 @@ const Experience = () => {
 
                 {/* Content */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
-                  <div className="bg-dark-bg p-6 rounded-lg border border-gray-800 hover:border-terminal-green transition-all hover:card-glow">
-                    <div className="flex items-center gap-2 mb-2 justify-start">
-                      <Briefcase className="text-terminal-blue w-5 h-5" />
-                      <h3 className="text-xl font-bold text-terminal-green">
-                        {exp.position}
-                      </h3>
+                  <div
+                    className="bg-dark-bg p-6 rounded-lg border border-gray-800 hover:border-terminal-green transition-all hover:card-glow cursor-pointer"
+                    onClick={() => toggleExpand(index)}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <Briefcase className="text-terminal-blue w-5 h-5" />
+                        <h3 className="text-xl font-bold text-terminal-green">
+                          {exp.position}
+                        </h3>
+                      </div>
+                      <ChevronDown
+                        className={`text-terminal-green w-5 h-5 transition-transform duration-300 ${
+                          expandedItems.has(index) ? 'rotate-180' : ''
+                        }`}
+                      />
                     </div>
 
-                    <h4 className="text-lg font-semibold text-gray-200 mb-2">
+                    <h4 className="text-lg font-semibold text-gray-200 mb-2 text-left">
                       {exp.company}
                     </h4>
 
-                    <div className="flex items-center gap-2 text-gray-400 mb-4">
+                    <div className="flex items-center gap-2 text-gray-400">
                       <Calendar className="w-4 h-4" />
                       <span>{exp.period}</span>
                     </div>
 
-                    <ul className="space-y-2 mb-4 text-gray-300 text-left">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="text-terminal-blue mt-1">{'>'}</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        expandedItems.has(index) ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <ul className="space-y-2 mb-4 text-gray-300 text-left">
+                        {exp.description.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-terminal-blue mt-1">{'>'}</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
 
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 text-xs bg-gray-800 text-terminal-blue rounded-full border border-gray-700"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-3 py-1 text-xs bg-gray-800 text-terminal-blue rounded-full border border-gray-700"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
