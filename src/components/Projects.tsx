@@ -24,7 +24,7 @@ const Projects = () => {
     {
       title: 'Site Translator',
       description: 'Design for site workers for their meeting',
-      image: '/public/sitetranslator.JPG',
+      image: '/sitetranslator.jpg',
       technologies: ['React','TTS', 'AI Models'],
       website: "https://site-translator.onrender.com",
     },
@@ -45,7 +45,7 @@ const Projects = () => {
     {
       title: 'ProTechs Nutrition',
       description: 'Full-stack online ordering platform with payment integration, admin panel, and inventory management. Deployed across 6 locations with 25% sales increase.',
-      image: '/public/ptlogo.JPG',
+      image: '/ptlogo.jpg',
       technologies: ['React', 'Firebase', 'HitPay', 'Database Design'],
       website: "www.protechsnutrition.com",
     },
@@ -58,7 +58,7 @@ const Projects = () => {
     {
       title: 'Diabetic Foot Ulcer Detection System',
       description: 'Award-winning healthcare technology using YOLOv3 computer vision model with 85%+ accuracy. Real-time detection system with image upload and streaming for remote physician analysis.',
-      image: '/public/dibeticfoot.JPG',
+      image: '/dibeticfoot.jpg',
       technologies: ['Python', 'YOLOv3', 'Computer Vision', 'Raspberry Pi', 'Real-time Streaming'],
     },
     {
@@ -70,7 +70,7 @@ const Projects = () => {
     {
       title: 'Event Booking System - 10,000+ Guests',
       description: 'Large-scale booking system with Twilio and MailGun integration for real-time notifications. Includes monitoring dashboard and AWS deployment with optimized performance.',
-      image: '/public/MBS.JPG',
+      image: '/MBS.jpg',
       technologies: ['React', 'AWS EC2', 'Route 53', 'Twilio', 'MailGun', 'Real-time Monitoring'],
     }
   ]
