@@ -54,7 +54,7 @@ const Hero = () => {
               <div className="relative">
                 <img
                   src="/personal.JPG"
-                  alt="Yusen Fan"
+                  alt="Simon Fan"
                   className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-xl"
                 />
               </div>
@@ -85,7 +85,7 @@ const Hero = () => {
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-gradient">
-                  Yusen Fan
+                  Simon Fan
                 </h1>
 
                 <div className="text-xl sm:text-2xl mb-6 h-10 flex items-center font-mono">

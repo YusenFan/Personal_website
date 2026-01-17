@@ -22,13 +22,13 @@ const Contact = () => {
     {
       name: 'GitHub',
       icon: <Github className="w-6 h-6" />,
-      url: 'https://github.com/yusenfan',
+      url: 'https://github.com/Simonfan',
       color: 'hover:text-slate-800'
     },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-6 h-6" />,
-      url: 'https://www.linkedin.com/in/yusenfan',
+      url: 'https://www.linkedin.com/in/Simonfan',
       color: 'hover:text-blue-600'
     },
     {
@@ -40,7 +40,7 @@ const Contact = () => {
     {
       name: 'Email',
       icon: <Mail className="w-6 h-6" />,
-      url: 'mailto:YusenFan@u.nus.edu',
+      url: 'mailto:SimonFan@u.nus.edu',
       color: 'hover:text-primary'
     }
   ]
@@ -155,10 +155,10 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-slate-800 mb-1">Email</h4>
                     <a
-                      href="mailto:YusenFan@u.nus.edu"
+                      href="mailto:SimonFan@u.nus.edu"
                       className="text-slate-600 hover:text-primary transition-colors"
                     >
-                      YusenFan@u.nus.edu
+                      SimonFan@u.nus.edu
                     </a>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ const Contact = () => {
             <span className="text-emerald-600 font-mono">$</span>
           </p>
           <p className="text-sm">
-            © 2024 Yusen Fan. All rights reserved.
+            © 2024 Simon Fan. All rights reserved.
           </p>
         </motion.div>
       </div>

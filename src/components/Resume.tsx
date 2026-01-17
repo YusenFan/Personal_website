@@ -26,7 +26,7 @@ const Resume = () => {
       // Configure PDF options
       const options = {
         margin: [10, 10, 10, 10] as [number, number, number, number],
-        filename: 'Yusen_Fan_Resume.pdf',
+        filename: 'Simon_Fan_Resume.pdf',
         image: { type: 'jpeg' as const, quality: 0.98 },
         html2canvas: {
           scale: 2,
@@ -97,7 +97,7 @@ const Resume = () => {
 
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-slate-800 mb-2">
-                Yusen Fan - Resume
+                Simon Fan - Resume
               </h3>
               <p className="text-slate-600">
                 Software Engineer | Founding Engineer at FlintX | NUS ECE Student

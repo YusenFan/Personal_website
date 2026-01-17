@@ -20,7 +20,7 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
       {
         input: 'welcome',
         output: [
-          'Welcome to Yusen\'s interactive terminal!',
+          'Welcome to Simon\'s interactive terminal!',
           '',
           'Available commands:',
           '  help       - Show available commands',
@@ -61,7 +61,7 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
     about: [
       'About Me:',
       '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
-      'I\'m Yusen Fan, a Founding Engineer at FlintX working on confidential',
+      'I\'m Simon Fan, a Founding Engineer at FlintX working on confidential',
       'AI infrastructure. I\'m also the Founder & CEO of ProTechs Nutrition,',
       'with 6 locations across Singapore.',
       '',
@@ -99,10 +99,10 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
     contact: [
       'Contact Information:',
       '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
-      'Email:    YusenFan@u.nus.edu',
+      'Email:    SimonFan@u.nus.edu',
       'Phone:    +65 84038810',
-      'GitHub:   github.com/yusenfan',
-      'LinkedIn: linkedin.com/in/yusenfan',
+      'GitHub:   github.com/Simonfan',
+      'LinkedIn: linkedin.com/in/Simonfan',
       'Location: Singapore',
       '',
       'Feel free to reach out for opportunities or collaborations!',
@@ -129,10 +129,10 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
     if (trimmedCmd === '') {
       output = ['']
     } else if (trimmedCmd === 'github') {
-      window.open('https://github.com/yusenfan', '_blank')
+      window.open('https://github.com/Simonfan', '_blank')
       output = commands.github
     } else if (trimmedCmd === 'linkedin') {
-      window.open('https://www.linkedin.com/in/yusenfan', '_blank')
+      window.open('https://www.linkedin.com/in/Simonfan', '_blank')
       output = commands.linkedin
     } else if (commands[trimmedCmd]) {
       output = commands[trimmedCmd]
@@ -198,7 +198,7 @@ const Terminal = ({ onClose }: { onClose: () => void }) => {
               <div className="w-3 h-3 rounded-full bg-amber-400"></div>
               <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
               <span className="ml-4 text-emerald-600 font-semibold font-mono">
-                yusen@portfolio:~$
+                Simon@portfolio:~$
               </span>
             </div>
             <div className="flex items-center gap-2">

@@ -1,4 +1,4 @@
-# Yusen Fan - Personal Portfolio Website
+# Simon Fan - Personal Portfolio Website
 
 A modern, interactive personal portfolio website showcasing my work as a Software Engineer and Founder. Built with React, TypeScript, and Tailwind CSS, featuring a terminal-inspired design with smooth animations and responsive layout.
 
@@ -65,10 +65,10 @@ npm run preview
 ### Content Already Customized
 
 The portfolio is already populated with your real information from your resume:
-- ✅ Name: Yusen Fan
-- ✅ Contact: YusenFan@u.nus.edu, +65 84038810
+- ✅ Name: Simon Fan
+- ✅ Contact: SimonFan@u.nus.edu, +65 84038810
 - ✅ Location: Singapore
-- ✅ Social Links: GitHub (yusenfan), LinkedIn (yusenfan)
+- ✅ Social Links: GitHub (Simonfan), LinkedIn (Simonfan)
 - ✅ Professional Experience: All 6 positions (FlintX, ProTechs, Classkick, Dempsey Capital, Wave Therapeutics, Codesurance)
 - ✅ Skills: 19 technical skills across Frontend, Backend, and Infrastructure
 - ✅ Projects: 6 major projects including award-winning Nexus Wrap and Diabetic Ulcer Detection
