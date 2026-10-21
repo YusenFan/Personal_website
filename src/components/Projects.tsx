@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, FileText, Github } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fadeInUp } from '../utils/animations'
 
@@ -10,6 +10,7 @@ interface Project {
   github?: string
   demo?: string
   website?: string
+  paper?: string
 }
 
 const Projects = () => {
@@ -41,6 +42,7 @@ const Projects = () => {
       image: 'https://lsvp.com/wp-content/uploads/2023/09/ai.security.lock_.header.png?1700626374',
       technologies: ['Python', 'AWS Nitro Enclave', 'TEE', 'LLM', 'RAG', 'Multimodal AI'],
       demo: "https://flintx.vercel.app/",
+      paper: "/multi-hop-retrieval-tee.pdf",
     },
     {
       title: 'ProTechs Nutrition',
@@ -175,6 +177,17 @@ const Projects = () => {
                       >
                         <ExternalLink size={18} />
                         <span>Demo</span>
+                      </a>
+                    )}
+                    {project.paper && (
+                      <a
+                        href={project.paper}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-slate-500 hover:text-primary transition-colors text-sm"
+                      >
+                        <FileText size={18} />
+                        <span>Paper</span>
                       </a>
                     )}
                   </div>
